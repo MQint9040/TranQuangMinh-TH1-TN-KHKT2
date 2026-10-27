@@ -40,9 +40,15 @@ Tổng hợp bài Thực hành 1 môn TNKHKT2
 - Project: [Bài 3/Bai3](<Bài 3/Bai3>)
 - Sơ đồ đấu nối: [sơ đồ kết nối.png](<Bài 3/sơ đồ kết nối.png>)
 - So sánh thô và đã lọc: [Biểu đồ so sánh lọc và thô.png](<Bài 3/Biểu đồ so sánh lọc và thô.png>)
-- Thông số: bộ lọc trung bình trượt, cửa sổ N = 8, chu kỳ lấy mẫu 20 ms (cửa sổ khoảng 160 ms)
+- Thông số: bộ lọc trung bình trượt N = 8, chu kỳ lấy mẫu 20 ms (cửa sổ khoảng 160 ms), đọc ADC ở GPIO34 (ADC1_CH6)
 
-*Nhận xét:
-- Số liệu thô (ADC ESP32) dao động và có các gai nhiễu đột ngột; đường đã lọc mượt hơn rõ rệt và các gai bị giảm biên độ.
-- Đổi lại, đường đã lọc bị trễ khoảng vài mẫu so với tín hiệu thô khi giá trị thay đổi thật (đúng với đặc tính của trung bình trượt).
-- N lớn thì mượt hơn nhưng trễ hơn, N nhỏ thì nhanh hơn nhưng lọc kém. N = 8 là mức cân bằng cho bài này.
+| Chỉ số (50 mẫu cuối) | Thô | Đã lọc |
+|---|---|---|
+| Độ lệch chuẩn | 5.1 | 1.6 |
+
+**Nhận xét:**
+- Độ lệch chuẩn giảm từ 5.1 xuống 1.6 (khoảng 69%), nên số liệu đã lọc ổn định hơn nhiều. Tín hiệu quanh mức 2122, nhiễu thô dao động vài đơn vị.
+- Số liệu thô có các gai nhiễu đột ngột, lệch tới khoảng 2176 (+54) và 2069 (-53). Sau lọc, gai lớn nhất chỉ còn khoảng 2131 (+9), tức biên độ gai giảm mạnh.
+- Gai không bị xóa hẳn mà bị "pha loãng": mỗi gai nằm trong cửa sổ 8 mẫu nên đường đã lọc có một đoạn bậc kéo dài khoảng 160 ms. Muốn loại gai triệt để hơn thì dùng lọc trung vị (median).
+- Đổi lại, trung bình trượt gây trễ cỡ vài mẫu khi tín hiệu thay đổi thật. N lớn thì mượt hơn nhưng trễ hơn, N = 8 là mức cân bằng.
+- **Về ADC2 và chân strapping: ADC2 của ESP32 dùng chung với một số chân strapping (GPIO0, 2, 12, 15) và còn bị WiFi chiếm khi bật WiFi, nên đọc không ổn định. Vì vậy bài này dùng ADC1 (GPIO34, chân chỉ đọc) để lấy mẫu.
