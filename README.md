@@ -1,8 +1,8 @@
 ## Bài 1: Nút nhấn khi loop() bận
 
 - Sơ đồ đấu nối (dùng chung Bài 1 + 2): [So do noi day.png](<Bài 2/So do noi day.png>)
-- Video không ngắt (polling): [Khong ngat.mp4](<Bài 1/Khong ngat.mp4>)
-- Video có ngắt: [Co ngat.mp4](<Bài 1/Co ngat.mp4>)
+- Video không ngắt (polling): [Khong ngat.mp4](https://drive.google.com/file/d/1glej6pDCGcKrLENte4qQVBzBCTSZFUL_/view?usp=sharing)
+- Video có ngắt: [Co ngat.mp4]([<Bài 1/Co ngat.mp4>](https://drive.google.com/file/d/16N0SJfGAvqKyCmOjgZnx_1et3E1EiHmH/view?usp=sharing))
 
 **Nhận xét:**
 - Không dùng ngắt (VD1): nút chỉ được đọc một lần mỗi vòng `for`, giữa hai lần đọc có `delay(10)`. Nếu nhấn nhanh hoặc `loop()` bận lâu, lần nhấn có thể rơi vào lúc CPU đang delay và bị bỏ lỡ.
@@ -14,7 +14,7 @@
 
 - Project: [Bài 2/Bai2](<Bài 2/Bai2>)
 - Biểu đồ: [10 lần nhấn](<Bài 2/Chart 10 lan nhan.png>), [40 lần nhấn](<Bài 2/Chart 40 lan nhan.png>)
-- Video: [debounce 60ms.mp4](<Bài 2/debounce 60ms.mp4>)
+- Video: [debounce 60ms.mp4]([<Bài 2/debounce 60ms.mp4>](https://drive.google.com/file/d/1dQOfA1mReHdmbEItG9yEcoGevz69ebGv/view?usp=sharing))
 
 **Ngưỡng debounce chọn: 60 ms**
 
